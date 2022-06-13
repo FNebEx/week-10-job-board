@@ -2,6 +2,7 @@ import Jobs from "components/Jobs";
 import { getJobs, getUser } from "lib/data";
 import prisma from "lib/prisma";
 import { getSession, useSession } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default function Index({ jobs, user }) {
@@ -39,8 +40,12 @@ export default function Index({ jobs, user }) {
             </p>
             {user.company ? (
               <>
-                <button className="border px-8 py-2 mt-5 font-bold rounded-full bg-black text-white border-black">New Job</button>
-                <button className="ml-5 border px-8 py-2 mt-5 font-bold rounded-full bg-black text-white border-black">See All Jobs</button>
+                <Link href={'/new'}>
+                  <a className="border px-8 py-2 mt-5 font-bold rounded-full bg-black text-white border-black">New Job</a>
+                </Link>
+                <Link href={'/dashboard'}>
+                  <a className="ml-5 border px-8 py-2 mt-5 font-bold rounded-full bg-black text-white border-black">See All Jobs</a>
+                </Link>
               </>
             ) : (
               <>
